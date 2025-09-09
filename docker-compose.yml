@@ -24,7 +24,7 @@ services:
   # Node.js Application
   app:
     build: .
-    container_name: logistics-tracker
+    container_name: logistics-tracker-app
     restart: unless-stopped
     depends_on:
       mongodb:
