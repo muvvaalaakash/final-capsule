@@ -3,8 +3,8 @@ pipeline {
     environment {
         DOCKER_IMAGE = "shaikhamadi/logistics-tracker-app"
         DOCKER_TAG   = "${BUILD_NUMBER}"
-        EKS_CLUSTER_NAME = "hamadi-cluster-12345"
-        AWS_REGION = "us-east-1"
+        EKS_CLUSTER_NAME = "hamadi-test-cluster"
+        AWS_REGION = "ca-central-1"
     }
     stages {
         stage('Checkout') {
