@@ -22,10 +22,17 @@ jobs:
       - name: Set lowercase repo name
         run: echo "IMAGE_NAME=ghcr.io/${GITHUB_REPOSITORY,,}" >> $GITHUB_ENV
 
+      # - name: Build Image
+      #   run: |
+      #     docker build -t $IMAGE_NAME:latest \
+      #                  -t $IMAGE_NAME:${{ github.sha }} .
+      
       - name: Build Image
         run: |
-          docker build -t $IMAGE_NAME:latest \
-                       -t $IMAGE_NAME:${{ github.sha }} .
+          docker build \
+            --cache-from=$IMAGE_NAME:latest \
+            -t $IMAGE_NAME:latest \
+            -t $IMAGE_NAME:${{ github.sha }} .
 
       - name: Push Image
         run: |
